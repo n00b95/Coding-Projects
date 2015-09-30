@@ -1,0 +1,25 @@
+import wx
+app = wx.App()
+win = wx.Frame(None,title="Tester Beta 1.0", size=(400,400))
+win.Show()
+
+loadButton = wx.Button(win, label="Open_Test",
+						pos=(220,1), size=(85,25))
+
+saveButton = wx.Button(win, label="Save_Test",
+						pos=(310,1), size=(80,25))
+						
+answerButton = wx.Button(win,label="Click For Answer",
+						pos=(0,150),size=(390,25))
+
+filename = wx.TextCtrl(win, pos=(5,5), size=(210,25))
+
+firstWindow = wx.TextCtrl(win,pos=(5,35), size=(390,100),
+						style=wx.TE_MULTILINE | wx.HSCROLL)
+
+
+secondWindow = wx.TextCtrl(win,pos=(5,200), size=(390,100),
+						style=wx.TE_MULTILINE | wx.HSCROLL)						
+	
+
+app.MainLoop()
