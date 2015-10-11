@@ -1,0 +1,38 @@
+import wx
+import random
+from time import sleep
+
+
+def loadFortunes(event):
+	cookie = random.choice(fortune.values())
+	fortunes.WriteText(cookie)
+
+app = wx.App()
+win = wx.Frame(None, title = 'FortuneCookie',size = (300,200))
+bkg = wx.Panel(win)
+
+bkg.SetBackgroundColour('black')
+
+fortuneButton =  wx.Button(bkg, label = 'Press For Fortune',pos=(0,10),size=(290,10))
+fortuneButton.Bind(wx.EVT_BUTTON,loadFortunes)
+
+fortunes = wx.TextCtrl(bkg,style=wx.TE_MULTILINE | wx.HSCROLL,size=(5,5))
+
+fortune = { 'good': 'Fortune1: (You will encounter more money) \n', 'bad':'Fortune2: (You will become bald) \n'}
+
+hbox = wx.BoxSizer()
+hbox.Add(fortuneButton, proportion = 1, flag = wx.LEFT)
+
+vbox = wx.BoxSizer(wx.VERTICAL)
+
+vbox.Add(hbox,proportion = 0, flag = wx.EXPAND | wx.ALL | wx.TOP, border = 10)
+
+vbox.Add(fortunes, proportion=1,
+		flag=wx.EXPAND | wx.LEFT | wx.BOTTOM | wx.RIGHT | wx.TOP,border = 20 )
+		
+		
+		
+bkg.SetSizer(vbox)
+
+win.Show()
+app.MainLoop()
